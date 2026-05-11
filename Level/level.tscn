@@ -1,9 +1,7 @@
 [gd_scene load_steps=2 format=2]
 
-[sub_resource type="CubeMesh" id=1]
-size = Vector3( 10, 0.2, 10 )
+[ext_resource path="res://Level/level1.glb" type="PackedScene" id=2]
 
 [node name="Level" type="Spatial"]
 
-[node name="MeshInstance" type="MeshInstance" parent="."]
-mesh = SubResource( 1 )
+[node name="level1" parent="." instance=ExtResource( 2 )]
