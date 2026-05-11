@@ -1,9 +1,9 @@
 extends Spatial
 
 export var angular_speed = 40
-export var scope_zoom = 35 #Lower the value for more zoom
+export var scope_zoom = 25 #Lower the value for more zoom
 export var switching_time = 0.2 #Time to open or close the scope
-export var zoom_amount = 45 # Lower the value for more zoom
+export var zoom_amount = 25 # Lower the value for more zoom
 export var zoom_time = 0.1 #Time to zoom in or out
 export var zoom_ang_speed = 25  
 export var default_zoom = 70
