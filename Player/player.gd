@@ -5,30 +5,21 @@ export var scope_zoom = 35 #Lower the value for more zoom
 export var switching_time = 0.2 #Time to open or close the scope
 export var zoom_amount = 45 # Lower the value for more zoom
 export var zoom_time = 0.1 #Time to zoom in or out
+export var zoom_ang_speed = 25  
 export var default_zoom = 70
 
-var direction:Vector2 = Vector2.ZERO
 var scope = false
 var zoomed = false
-onready var zoom_tween: SceneTreeTween = create_tween()
+onready var zoom_tween: SceneTreeTween
+onready var anchor = $Anchor
 
+onready var body = $Body
 onready var camera = $Body/Camera
 
-func _physics_process(delta):
-	if not scope:
-		if Input.is_action_pressed("move_left"):
-			direction.x = -1
-		if Input.is_action_pressed("move_right"):
-			direction.x = 1
-		if Input.is_action_pressed("move_down"):
-			direction.y = -1
-		if Input.is_action_pressed("move_up"):
-			direction.y = 1
-		rotate_y(deg2rad(angular_speed * direction.x * delta))
-		#otate_x(deg2rad(angular_speed * direction.y * delta))
-		direction = Vector2.ZERO
-	else:
-		direction = Vector2.ZERO
+func _physics_process(_delta):
+	
+	if scope:
+		anchor.direction = Vector2.ZERO
 		if Input.is_action_just_pressed("shoot") and scope:
 			shoot()
 
