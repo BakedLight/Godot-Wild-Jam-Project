@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Level/scene/Spot.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Level/scene/Building.tscn" type="PackedScene" id=2]
@@ -6,195 +6,235 @@
 [ext_resource path="res://Level/scene/Cube.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Level/scene/Sphere.tscn" type="PackedScene" id=5]
 
+[sub_resource type="NavigationMesh" id=1]
+vertices = PoolVector3Array( -14.0791, 6.13732, 6.19223, -14.0791, 6.13732, 13.6922, -8.07915, 6.13732, 13.6922, -8.07915, 6.13732, -16.3078, -14.0791, 6.13732, -16.3078, -14.0791, 6.13732, -8.80777, 6.92085, 6.13732, 13.6922, 14.4209, 6.13732, 13.6922, 14.4209, 6.13732, 6.19223, 14.4209, 6.13732, -8.80777, 14.4209, 6.13732, -16.3078, 6.92085, 6.13732, -16.3078, -14.0791, 6.13732, 6.19223, -8.07915, 6.13732, 13.6922, -0.579148, 6.13732, 13.6922, -14.0791, 6.13732, -1.30777, -0.579148, 6.13732, -16.3078, -8.07915, 6.13732, -16.3078, -14.0791, 6.13732, -8.80777, -14.0791, 6.13732, -1.30777, -0.579148, 6.13732, 13.6922, 6.92085, 6.13732, 13.6922, 14.4209, 6.13732, 6.19223, 14.4209, 6.13732, -1.30777, 14.4209, 6.13732, -8.80777, 6.92085, 6.13732, -16.3078, -0.579148, 6.13732, -16.3078, -14.0791, 6.13732, -1.30777, -0.579148, 6.13732, 13.6922, 14.4209, 6.13732, 6.19223, 14.4209, 6.13732, -1.30777, 6.92085, 6.13732, -16.3078, 3.92085, -2.86268, -11.8078, -0.579148, -2.86268, -11.8078, 2.42085, -2.86268, -8.80777, 11.4209, -2.86268, -11.8078, 5.42085, -2.86268, -14.8078, 3.92085, -2.86268, -11.8078, 3.92085, -2.86268, 12.1922, 11.4209, -2.61268, 10.6922, 6.92085, -2.86268, 4.69223, 2.42085, -2.86268, 6.19223, 11.4209, -2.86268, -11.8078, 3.92085, -2.86268, -11.8078, 2.42085, -2.86268, -8.80777, 2.42085, -2.86268, -1.30777, 11.4209, -2.86268, -4.30777, -6.57915, -2.86268, -4.30777, -5.07915, -2.86268, -14.8078, -12.5791, -2.86268, -11.8078, -12.5791, -2.61268, 0.192234, -3.57915, -2.86268, 7.69223, -5.07915, -2.86268, 10.6922, -3.57915, -2.61268, 21.1922, 3.92085, -2.61268, 21.1922, 3.92085, -2.86268, 12.1922, 2.42085, -2.86268, 6.19223, -6.57915, -2.86268, 3.19223, -6.57915, -2.86268, -4.30777, -12.5791, -2.61268, 0.192234, 6.92085, -2.86268, 4.69223, 9.92085, -2.86268, 3.19223, 11.4209, -2.86268, -4.30777, 2.42085, -2.86268, -1.30777, 2.42085, -2.86268, 6.19223, -6.57915, -2.86268, 3.19223, -12.5791, -2.61268, 0.192234, -12.5791, -2.61268, 12.1922, -5.07915, -2.86268, 10.6922, -3.57915, -2.86268, 7.69223 )
+polygons = [ PoolIntArray( 2, 1, 0 ), PoolIntArray( 5, 4, 3 ), PoolIntArray( 8, 7, 6 ), PoolIntArray( 11, 10, 9 ), PoolIntArray( 13, 12, 14 ), PoolIntArray( 14, 12, 15 ), PoolIntArray( 17, 16, 18 ), PoolIntArray( 18, 16, 19 ), PoolIntArray( 22, 21, 20 ), PoolIntArray( 25, 24, 23 ), PoolIntArray( 31, 30, 26 ), PoolIntArray( 26, 30, 29 ), PoolIntArray( 26, 29, 28 ), PoolIntArray( 26, 28, 27 ), PoolIntArray( 34, 33, 32 ), PoolIntArray( 37, 36, 35 ), PoolIntArray( 41, 40, 38 ), PoolIntArray( 38, 40, 39 ), PoolIntArray( 43, 42, 44 ), PoolIntArray( 44, 42, 46 ), PoolIntArray( 44, 46, 45 ), PoolIntArray( 48, 47, 49 ), PoolIntArray( 49, 47, 50 ), PoolIntArray( 51, 56, 52 ), PoolIntArray( 52, 56, 55 ), PoolIntArray( 52, 55, 53 ), PoolIntArray( 53, 55, 54 ), PoolIntArray( 59, 58, 57 ), PoolIntArray( 60, 64, 61 ), PoolIntArray( 61, 64, 63 ), PoolIntArray( 61, 63, 62 ), PoolIntArray( 69, 68, 65 ), PoolIntArray( 65, 68, 67 ), PoolIntArray( 65, 67, 66 ) ]
+cell_size = 1.5
+
 [node name="Level" type="Spatial"]
 
-[node name="level1" parent="." instance=ExtResource( 2 )]
+[node name="Navigation" type="Navigation" parent="."]
+
+[node name="NavigationMeshInstance" type="NavigationMeshInstance" parent="Navigation"]
+navmesh = SubResource( 1 )
+
+[node name="level1" parent="Navigation/NavigationMeshInstance" instance=ExtResource( 2 )]
 transform = Transform( -3.27835e-08, 0, -0.75, 0, 0.75, 0, 0.75, 0, -3.27835e-08, 0, 0, 0 )
+skeleton = NodePath("../../..")
 
-[node name="Display_table" parent="." instance=ExtResource( 3 )]
-transform = Transform( 0.701634, 0, 0, 0, 1.89468, 0, 0, 0, 1.77756, -4.19988, -1.2345, 1.16332 )
+[node name="Display_table" parent="Navigation/NavigationMeshInstance/level1" instance=ExtResource( 3 )]
+transform = Transform( -4.08925e-08, 0, 2.37008, 0, 2.52624, 0, -0.935512, 0, -1.03599e-07, 1.55109, -1.646, 5.59984 )
+skeleton = NodePath("../../../..")
 
-[node name="Cube1" parent="Display_table" instance=ExtResource( 4 )]
+[node name="Cube1" parent="Navigation/NavigationMeshInstance/level1/Display_table" instance=ExtResource( 4 )]
 transform = Transform( 0.712622, 0, 0, 0, 0.263897, 0, 0, 0, 0.281285, -0.0821543, 1.26452, -0.474072 )
-skeleton = NodePath("../..")
+skeleton = NodePath("../../../../..")
 
-[node name="Sphere1" parent="Display_table" instance=ExtResource( 5 )]
+[node name="Sphere1" parent="Navigation/NavigationMeshInstance/level1/Display_table" instance=ExtResource( 5 )]
 transform = Transform( 0.712622, 0, 0, 0, 0.263897, 0, 0, 0, 0.281285, -0.0172143, 1.25788, -0.473409 )
-skeleton = NodePath("../..")
+skeleton = NodePath("../../../../..")
 
-[node name="Cube2" parent="Display_table" instance=ExtResource( 4 )]
+[node name="Cube2" parent="Navigation/NavigationMeshInstance/level1/Display_table" instance=ExtResource( 4 )]
 transform = Transform( 0.712622, 0, 0, 0, 0.263897, 0, 0, 0, 0.281285, -0.0821543, 1.26452, 0.482746 )
-skeleton = NodePath("../..")
+skeleton = NodePath("../../../../..")
 
-[node name="Sphere2" parent="Display_table" instance=ExtResource( 5 )]
+[node name="Sphere2" parent="Navigation/NavigationMeshInstance/level1/Display_table" instance=ExtResource( 5 )]
 transform = Transform( 0.712622, 0, 0, 0, 0.263897, 0, 0, 0, 0.281285, -0.0865569, 1.25788, 0.481885 )
-skeleton = NodePath("../..")
+skeleton = NodePath("../../../../..")
 
-[node name="Display_table2" parent="." instance=ExtResource( 3 )]
-transform = Transform( 0.701634, 0, 0, 0, 1.89468, 0, 0, 0, 1.77756, -4.19988, -1.2345, -5.91343 )
+[node name="Display_table2" parent="Navigation/NavigationMeshInstance/level1" instance=ExtResource( 3 )]
+transform = Transform( -4.08925e-08, 0, 2.37008, 0, 2.52624, 0, -0.935512, 0, -1.03599e-07, -7.88457, -1.646, 5.59984 )
+skeleton = NodePath("../../../..")
 
-[node name="Cube1" parent="Display_table2" instance=ExtResource( 4 )]
+[node name="Cube1" parent="Navigation/NavigationMeshInstance/level1/Display_table2" instance=ExtResource( 4 )]
 transform = Transform( 0.712622, 0, 0, 0, 0.263897, 0, 0, 0, 0.281285, -0.0821543, 1.26452, -0.474072 )
-skeleton = NodePath("../..")
+skeleton = NodePath("../../../../..")
 
-[node name="Sphere1" parent="Display_table2" instance=ExtResource( 5 )]
+[node name="Sphere1" parent="Navigation/NavigationMeshInstance/level1/Display_table2" instance=ExtResource( 5 )]
 transform = Transform( 0.712622, 0, 0, 0, 0.263897, 0, 0, 0, 0.281285, -0.0172143, 1.25788, -0.473409 )
-skeleton = NodePath("../..")
+skeleton = NodePath("../../../../..")
 
-[node name="Cube2" parent="Display_table2" instance=ExtResource( 4 )]
+[node name="Cube2" parent="Navigation/NavigationMeshInstance/level1/Display_table2" instance=ExtResource( 4 )]
 transform = Transform( 0.712622, 0, 0, 0, 0.263897, 0, 0, 0, 0.281285, -0.0821543, 1.26452, 0.482746 )
-skeleton = NodePath("../..")
+skeleton = NodePath("../../../../..")
 
-[node name="Sphere2" parent="Display_table2" instance=ExtResource( 5 )]
+[node name="Sphere2" parent="Navigation/NavigationMeshInstance/level1/Display_table2" instance=ExtResource( 5 )]
 transform = Transform( 0.712622, 0, 0, 0, 0.263897, 0, 0, 0, 0.281285, -0.0865569, 1.25788, 0.481885 )
-skeleton = NodePath("../..")
+skeleton = NodePath("../../../../..")
 
-[node name="Display_table3" parent="." instance=ExtResource( 3 )]
-transform = Transform( -3.06694e-08, 0, 1.77756, 0, 1.89468, 0, -0.701634, 0, -7.76996e-08, -10.985, -1.2345, -15.4864 )
+[node name="Display_table3" parent="Navigation/NavigationMeshInstance/level1" instance=ExtResource( 3 )]
+transform = Transform( -0.935512, 0, -2.07199e-07, 0, 2.52624, 0, 8.1785e-08, 0, -2.37008, -20.6485, -1.646, 14.6467 )
+skeleton = NodePath("../../../..")
 
-[node name="Cube1" parent="Display_table3" instance=ExtResource( 4 )]
+[node name="Cube1" parent="Navigation/NavigationMeshInstance/level1/Display_table3" instance=ExtResource( 4 )]
 transform = Transform( 0.712622, 0, 0, 0, 0.263897, 0, 0, 0, 0.281285, -0.0821543, 1.26452, -0.474072 )
-skeleton = NodePath("../..")
+skeleton = NodePath("../../../../..")
 
-[node name="Sphere1" parent="Display_table3" instance=ExtResource( 5 )]
+[node name="Sphere1" parent="Navigation/NavigationMeshInstance/level1/Display_table3" instance=ExtResource( 5 )]
 transform = Transform( 0.712622, 0, 0, 0, 0.263897, 0, 0, 0, 0.281285, -0.0172143, 1.25788, -0.473409 )
-skeleton = NodePath("../..")
+skeleton = NodePath("../../../../..")
 
-[node name="Cube2" parent="Display_table3" instance=ExtResource( 4 )]
+[node name="Cube2" parent="Navigation/NavigationMeshInstance/level1/Display_table3" instance=ExtResource( 4 )]
 transform = Transform( 0.712622, 0, 0, 0, 0.263897, 0, 0, 0, 0.281285, -0.0821543, 1.26452, 0.482746 )
-skeleton = NodePath("../..")
+skeleton = NodePath("../../../../..")
 
-[node name="Sphere2" parent="Display_table3" instance=ExtResource( 5 )]
+[node name="Sphere2" parent="Navigation/NavigationMeshInstance/level1/Display_table3" instance=ExtResource( 5 )]
 transform = Transform( 0.712622, 0, 0, 0, 0.263897, 0, 0, 0, 0.281285, -0.0865569, 1.25788, 0.481885 )
-skeleton = NodePath("../..")
+skeleton = NodePath("../../../../..")
 
-[node name="Display_table4" parent="." instance=ExtResource( 3 )]
-transform = Transform( -3.06694e-08, 0, 1.77756, 0, 1.89468, 0, -0.701634, 0, -7.76996e-08, 0.82352, -1.2345, -15.4864 )
+[node name="Display_table4" parent="Navigation/NavigationMeshInstance/level1" instance=ExtResource( 3 )]
+transform = Transform( -0.935512, 0, -2.07199e-07, 0, 2.52624, 0, 8.1785e-08, 0, -2.37008, -20.6485, -1.646, -1.09803 )
+skeleton = NodePath("../../../..")
 
-[node name="Cube1" parent="Display_table4" instance=ExtResource( 4 )]
+[node name="Cube1" parent="Navigation/NavigationMeshInstance/level1/Display_table4" instance=ExtResource( 4 )]
 transform = Transform( 0.712622, 0, 0, 0, 0.263897, 0, 0, 0, 0.281285, -0.0821543, 1.26452, -0.474072 )
-skeleton = NodePath("../..")
+skeleton = NodePath("../../../../..")
 
-[node name="Sphere1" parent="Display_table4" instance=ExtResource( 5 )]
+[node name="Sphere1" parent="Navigation/NavigationMeshInstance/level1/Display_table4" instance=ExtResource( 5 )]
 transform = Transform( 0.712622, 0, 0, 0, 0.263897, 0, 0, 0, 0.281285, -0.0172143, 1.25788, -0.473409 )
-skeleton = NodePath("../..")
+skeleton = NodePath("../../../../..")
 
-[node name="Cube2" parent="Display_table4" instance=ExtResource( 4 )]
+[node name="Cube2" parent="Navigation/NavigationMeshInstance/level1/Display_table4" instance=ExtResource( 4 )]
 transform = Transform( 0.712622, 0, 0, 0, 0.263897, 0, 0, 0, 0.281285, -0.0821543, 1.26452, 0.482746 )
-skeleton = NodePath("../..")
+skeleton = NodePath("../../../../..")
 
-[node name="Sphere2" parent="Display_table4" instance=ExtResource( 5 )]
+[node name="Sphere2" parent="Navigation/NavigationMeshInstance/level1/Display_table4" instance=ExtResource( 5 )]
 transform = Transform( 0.712622, 0, 0, 0, 0.263897, 0, 0, 0, 0.281285, -0.0865569, 1.25788, 0.481885 )
-skeleton = NodePath("../..")
+skeleton = NodePath("../../../../..")
 
-[node name="Display_table5" parent="." instance=ExtResource( 3 )]
-transform = Transform( -3.06694e-08, 0, 1.77756, 0, 1.89468, 0, -0.701634, 0, -7.76996e-08, 10.222, -1.2345, -15.4864 )
+[node name="Display_table5" parent="Navigation/NavigationMeshInstance/level1" instance=ExtResource( 3 )]
+transform = Transform( -0.935512, 0, -2.07199e-07, 0, 2.52624, 0, 8.1785e-08, 0, -2.37008, -20.6485, -1.646, -13.6293 )
+skeleton = NodePath("../../../..")
 
-[node name="Cube1" parent="Display_table5" instance=ExtResource( 4 )]
+[node name="Cube1" parent="Navigation/NavigationMeshInstance/level1/Display_table5" instance=ExtResource( 4 )]
 transform = Transform( 0.712622, 0, 0, 0, 0.263897, 0, 0, 0, 0.281285, -0.0821543, 1.26452, -0.474072 )
-skeleton = NodePath("../..")
+skeleton = NodePath("../../../../..")
 
-[node name="Sphere1" parent="Display_table5" instance=ExtResource( 5 )]
+[node name="Sphere1" parent="Navigation/NavigationMeshInstance/level1/Display_table5" instance=ExtResource( 5 )]
 transform = Transform( 0.712622, 0, 0, 0, 0.263897, 0, 0, 0, 0.281285, -0.0172143, 1.25788, -0.473409 )
-skeleton = NodePath("../..")
+skeleton = NodePath("../../../../..")
 
-[node name="Cube2" parent="Display_table5" instance=ExtResource( 4 )]
+[node name="Cube2" parent="Navigation/NavigationMeshInstance/level1/Display_table5" instance=ExtResource( 4 )]
 transform = Transform( 0.712622, 0, 0, 0, 0.263897, 0, 0, 0, 0.281285, -0.0821543, 1.26452, 0.482746 )
-skeleton = NodePath("../..")
+skeleton = NodePath("../../../../..")
 
-[node name="Sphere2" parent="Display_table5" instance=ExtResource( 5 )]
+[node name="Sphere2" parent="Navigation/NavigationMeshInstance/level1/Display_table5" instance=ExtResource( 5 )]
 transform = Transform( 0.712622, 0, 0, 0, 0.263897, 0, 0, 0, 0.281285, -0.0865569, 1.25788, 0.481885 )
-skeleton = NodePath("../..")
+skeleton = NodePath("../../../../..")
 
-[node name="Display_table6" parent="." instance=ExtResource( 3 )]
-transform = Transform( 0.701634, 0, 0, 0, 1.89468, 0, 0, 0, 1.77756, 13.1303, -1.2345, -7.21815 )
+[node name="Display_table6" parent="Navigation/NavigationMeshInstance/level1" instance=ExtResource( 3 )]
+transform = Transform( -4.08925e-08, 0, 2.37008, 0, 2.52624, 0, -0.935512, 0, -1.03599e-07, -9.6242, -1.646, -17.5071 )
+skeleton = NodePath("../../../..")
 
-[node name="Cube1" parent="Display_table6" instance=ExtResource( 4 )]
+[node name="Cube1" parent="Navigation/NavigationMeshInstance/level1/Display_table6" instance=ExtResource( 4 )]
 transform = Transform( 0.712622, 0, 0, 0, 0.263897, 0, 0, 0, 0.281285, -0.0821543, 1.26452, -0.474072 )
-skeleton = NodePath("../..")
+skeleton = NodePath("../../../../..")
 
-[node name="Sphere1" parent="Display_table6" instance=ExtResource( 5 )]
+[node name="Sphere1" parent="Navigation/NavigationMeshInstance/level1/Display_table6" instance=ExtResource( 5 )]
 transform = Transform( 0.712622, 0, 0, 0, 0.263897, 0, 0, 0, 0.281285, -0.0172143, 1.25788, -0.473409 )
-skeleton = NodePath("../..")
+skeleton = NodePath("../../../../..")
 
-[node name="Cube2" parent="Display_table6" instance=ExtResource( 4 )]
+[node name="Cube2" parent="Navigation/NavigationMeshInstance/level1/Display_table6" instance=ExtResource( 4 )]
 transform = Transform( 0.712622, 0, 0, 0, 0.263897, 0, 0, 0, 0.281285, -0.0821543, 1.26452, 0.482746 )
-skeleton = NodePath("../..")
+skeleton = NodePath("../../../../..")
 
-[node name="Sphere2" parent="Display_table6" instance=ExtResource( 5 )]
+[node name="Sphere2" parent="Navigation/NavigationMeshInstance/level1/Display_table6" instance=ExtResource( 5 )]
 transform = Transform( 0.712622, 0, 0, 0, 0.263897, 0, 0, 0, 0.281285, -0.0865569, 1.25788, 0.481885 )
-skeleton = NodePath("../..")
+skeleton = NodePath("../../../../..")
 
-[node name="Display_table7" parent="." instance=ExtResource( 3 )]
-transform = Transform( 0.701634, 0, 0, 0, 1.89468, 0, 0, 0, 1.77756, 13.1303, -1.2345, 0.114464 )
+[node name="Display_table7" parent="Navigation/NavigationMeshInstance/level1" instance=ExtResource( 3 )]
+transform = Transform( -4.08925e-08, 0, 2.37008, 0, 2.52624, 0, -0.935512, 0, -1.03599e-07, 0.152618, -1.646, -17.5071 )
+skeleton = NodePath("../../../..")
 
-[node name="Cube1" parent="Display_table7" instance=ExtResource( 4 )]
+[node name="Cube1" parent="Navigation/NavigationMeshInstance/level1/Display_table7" instance=ExtResource( 4 )]
 transform = Transform( 0.712622, 0, 0, 0, 0.263897, 0, 0, 0, 0.281285, -0.0821543, 1.26452, -0.474072 )
-skeleton = NodePath("../..")
+skeleton = NodePath("../../../../..")
 
-[node name="Sphere1" parent="Display_table7" instance=ExtResource( 5 )]
+[node name="Sphere1" parent="Navigation/NavigationMeshInstance/level1/Display_table7" instance=ExtResource( 5 )]
 transform = Transform( 0.712622, 0, 0, 0, 0.263897, 0, 0, 0, 0.281285, -0.0172143, 1.25788, -0.473409 )
-skeleton = NodePath("../..")
+skeleton = NodePath("../../../../..")
 
-[node name="Cube2" parent="Display_table7" instance=ExtResource( 4 )]
+[node name="Cube2" parent="Navigation/NavigationMeshInstance/level1/Display_table7" instance=ExtResource( 4 )]
 transform = Transform( 0.712622, 0, 0, 0, 0.263897, 0, 0, 0, 0.281285, -0.0821543, 1.26452, 0.482746 )
-skeleton = NodePath("../..")
+skeleton = NodePath("../../../../..")
 
-[node name="Sphere2" parent="Display_table7" instance=ExtResource( 5 )]
+[node name="Sphere2" parent="Navigation/NavigationMeshInstance/level1/Display_table7" instance=ExtResource( 5 )]
 transform = Transform( 0.712622, 0, 0, 0, 0.263897, 0, 0, 0, 0.281285, -0.0865569, 1.25788, 0.481885 )
-skeleton = NodePath("../..")
+skeleton = NodePath("../../../../..")
 
-[node name="Display_table8" parent="." instance=ExtResource( 3 )]
-transform = Transform( -0.701634, 0, -1.55399e-07, 0, 1.89468, 0, 6.13388e-08, 0, -1.77756, -1.10102, -1.2345, 0.114464 )
+[node name="Display_table8" parent="Navigation/NavigationMeshInstance/level1" instance=ExtResource( 3 )]
+transform = Transform( 1.22678e-07, 0, -2.37008, 0, 2.52624, 0, 0.935512, 0, 3.10798e-07, 0.152619, -1.646, 1.46803 )
+skeleton = NodePath("../../../..")
 
-[node name="Cube1" parent="Display_table8" instance=ExtResource( 4 )]
+[node name="Cube1" parent="Navigation/NavigationMeshInstance/level1/Display_table8" instance=ExtResource( 4 )]
 transform = Transform( 0.712622, 0, 0, 0, 0.263897, 0, 0, 0, 0.281285, -0.0821543, 1.26452, -0.474072 )
-skeleton = NodePath("../..")
+skeleton = NodePath("../../../../..")
 
-[node name="Sphere1" parent="Display_table8" instance=ExtResource( 5 )]
+[node name="Sphere1" parent="Navigation/NavigationMeshInstance/level1/Display_table8" instance=ExtResource( 5 )]
 transform = Transform( 0.712622, 0, 0, 0, 0.263897, 0, 0, 0, 0.281285, -0.0172143, 1.25788, -0.473409 )
-skeleton = NodePath("../..")
+skeleton = NodePath("../../../../..")
 
-[node name="Cube2" parent="Display_table8" instance=ExtResource( 4 )]
+[node name="Cube2" parent="Navigation/NavigationMeshInstance/level1/Display_table8" instance=ExtResource( 4 )]
 transform = Transform( 0.712622, 0, 0, 0, 0.263897, 0, 0, 0, 0.281285, -0.0821543, 1.26452, 0.482746 )
-skeleton = NodePath("../..")
+skeleton = NodePath("../../../../..")
 
-[node name="Sphere2" parent="Display_table8" instance=ExtResource( 5 )]
+[node name="Sphere2" parent="Navigation/NavigationMeshInstance/level1/Display_table8" instance=ExtResource( 5 )]
 transform = Transform( 0.712622, 0, 0, 0, 0.263897, 0, 0, 0, 0.281285, -0.0865569, 1.25788, 0.481885 )
-skeleton = NodePath("../..")
+skeleton = NodePath("../../../../..")
 
-[node name="Display_table9" parent="." instance=ExtResource( 3 )]
-transform = Transform( -0.701634, 0, -1.55399e-07, 0, 1.89468, 0, 6.13388e-08, 0, -1.77756, -1.10102, -1.2345, -6.95358 )
+[node name="Display_table9" parent="Navigation/NavigationMeshInstance/level1" instance=ExtResource( 3 )]
+transform = Transform( 1.22678e-07, 0, -2.37008, 0, 2.52624, 0, 0.935512, 0, 3.10798e-07, -9.27144, -1.646, 1.46803 )
+skeleton = NodePath("../../../..")
 
-[node name="Cube1" parent="Display_table9" instance=ExtResource( 4 )]
+[node name="Cube1" parent="Navigation/NavigationMeshInstance/level1/Display_table9" instance=ExtResource( 4 )]
 transform = Transform( 0.712622, 0, 0, 0, 0.263897, 0, 0, 0, 0.281285, -0.0821543, 1.26452, -0.474072 )
-skeleton = NodePath("../..")
+skeleton = NodePath("../../../../..")
 
-[node name="Sphere1" parent="Display_table9" instance=ExtResource( 5 )]
+[node name="Sphere1" parent="Navigation/NavigationMeshInstance/level1/Display_table9" instance=ExtResource( 5 )]
 transform = Transform( 0.712622, 0, 0, 0, 0.263897, 0, 0, 0, 0.281285, -0.0172143, 1.25788, -0.473409 )
-skeleton = NodePath("../..")
+skeleton = NodePath("../../../../..")
 
-[node name="Cube2" parent="Display_table9" instance=ExtResource( 4 )]
+[node name="Cube2" parent="Navigation/NavigationMeshInstance/level1/Display_table9" instance=ExtResource( 4 )]
 transform = Transform( 0.712622, 0, 0, 0, 0.263897, 0, 0, 0, 0.281285, -0.0821543, 1.26452, 0.482746 )
-skeleton = NodePath("../..")
+skeleton = NodePath("../../../../..")
 
-[node name="Sphere2" parent="Display_table9" instance=ExtResource( 5 )]
+[node name="Sphere2" parent="Navigation/NavigationMeshInstance/level1/Display_table9" instance=ExtResource( 5 )]
 transform = Transform( 0.712622, 0, 0, 0, 0.263897, 0, 0, 0, 0.281285, -0.0865569, 1.25788, 0.481885 )
-skeleton = NodePath("../..")
+skeleton = NodePath("../../../../..")
 
-[node name="Spot" parent="." instance=ExtResource( 1 )]
+[node name="Spot" parent="Navigation/NavigationMeshInstance/level1" instance=ExtResource( 1 )]
+transform = Transform( -2.49096e-07, 0, 1.33333, 0, 1.33333, 0, -5.69865, 0, -5.82818e-08, 26.8209, -4.08832, -0.0824542 )
 
-[node name="Spot2" parent="." instance=ExtResource( 1 )]
-transform = Transform( -3.77265e-07, 0, 2.01938, 0, 1, 0, -4.27399, 0, -4.37114e-08, 0.0618398, -3.06624, 12.8246 )
+[node name="Spot2" parent="Navigation/NavigationMeshInstance/level1" instance=ExtResource( 1 )]
+transform = Transform( -5.69865, 0, -1.75975e-07, 0, 1.33333, 0, 7.52116e-07, 0, -2.69251, 17.0995, -4.08832, -0.0824538 )
 
-[node name="Spot6" parent="." instance=ExtResource( 1 )]
-transform = Transform( -1.86822e-07, 0, 1, 0, 1, 0, -4.27399, 0, -4.37114e-08, 6.02488, -3.06624, -1.73978 )
+[node name="Spot6" parent="Navigation/NavigationMeshInstance/level1" instance=ExtResource( 1 )]
+transform = Transform( -5.69865, 0, -1.16564e-07, 0, 1.33333, 0, 4.98192e-07, 0, -1.33333, -2.31971, -4.08832, -8.03317 )
 
-[node name="Spot3" parent="." instance=ExtResource( 1 )]
-transform = Transform( -1.86822e-07, 0, 1, 0, 1, 0, -2.82146, 0, -2.88559e-08, 12.3633, -3.06624, 9.76426 )
+[node name="Spot3" parent="Navigation/NavigationMeshInstance/level1" instance=ExtResource( 1 )]
+transform = Transform( -3.76195, 0, -9.67563e-08, 0, 1.33333, 0, 4.13536e-07, 0, -1.33333, 13.019, -4.08832, -16.4844 )
 
-[node name="Spot4" parent="." instance=ExtResource( 1 )]
-transform = Transform( -1.86822e-07, 0, 1, 0, 1, 0, -2.82146, 0, -2.88559e-08, -12.0722, -3.06624, 9.5096 )
+[node name="Spot4" parent="Navigation/NavigationMeshInstance/level1" instance=ExtResource( 1 )]
+transform = Transform( -3.76195, 0, -9.67563e-08, 0, 1.33333, 0, 4.13536e-07, 0, -1.33333, 12.6795, -4.08832, 16.0963 )
 
-[node name="Spot5" parent="." instance=ExtResource( 1 )]
-transform = Transform( -1.86822e-07, 0, 1, 0, 1, 0, -2.82146, 0, -2.88559e-08, -12.0722, -3.06624, -1.74978 )
+[node name="Spot5" parent="Navigation/NavigationMeshInstance/level1" instance=ExtResource( 1 )]
+transform = Transform( -3.76195, 0, -9.67563e-08, 0, 1.33333, 0, 4.13536e-07, 0, -1.33333, -2.33304, -4.08832, 16.0963 )
+
+[node name="OmniLight" type="OmniLight" parent="Navigation/NavigationMeshInstance/level1"]
+transform = Transform( -5.82818e-08, 0, 1.33333, 0, 1.33333, 0, -1.33333, 0, -5.82818e-08, -5.1109, 6.14851, 10.6667 )
+shadow_enabled = true
+omni_range = 15.0
+
+[node name="OmniLight2" type="OmniLight" parent="Navigation/NavigationMeshInstance/level1"]
+transform = Transform( -5.82818e-08, 0, 1.33333, 0, 1.33333, 0, -1.33333, 0, -5.82818e-08, -5.1109, 6.14851, -9.33333 )
+shadow_enabled = true
+omni_range = 15.0
+
+[node name="OmniLight3" type="OmniLight" parent="Navigation/NavigationMeshInstance/level1"]
+transform = Transform( -5.82818e-08, 0, 1.33333, 0, 1.33333, 0, -1.33333, 0, -5.82818e-08, 18.8891, 6.14851, -8.25668e-07 )
+shadow_enabled = true
+omni_range = 15.0
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+light_energy = 0.4
+shadow_enabled = true
