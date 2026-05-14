@@ -9,9 +9,7 @@ onready var player = $".."
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	
-#func _physics_process(_delta):
-#	look_at(Vector3($"..".global_position.x, global_position.y, $"..".global_position.z), Vector3.UP)
+
 
 func _physics_process(_delta):
 	global_rotation.y = clamp(global_rotation.y , deg2rad(rad2deg(player.global_rotation.y)-horizontal_view), deg2rad(rad2deg(player.global_rotation.y)+horizontal_view))
