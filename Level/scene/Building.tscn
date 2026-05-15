@@ -19,6 +19,7 @@ data = PoolVector3Array( -23.7437, 6.7538, 20.5493, 19.3162, 6.7538, -20.5417, -
 
 [node name="Building" type="MeshInstance"]
 transform = Transform( 1.46842, 0, 0, 0, 1.46842, 0, 0, 0, 1.46842, 0, 1.33986, 0 )
+layers = 4
 mesh = SubResource( 1 )
 
 [node name="building" type="StaticBody" parent="."]

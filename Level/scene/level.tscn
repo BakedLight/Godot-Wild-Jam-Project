@@ -1,200 +1,372 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Level/scene/Spot.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Level/scene/Building.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Level/scene/Display_table.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Level/scene/Cube.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Level/scene/Sphere.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Player/player.tscn" type="PackedScene" id=6]
+[ext_resource path="res://NPCs/Normal/npc_1.tscn" type="PackedScene" id=7]
+[ext_resource path="res://NPCs/Stealer/Stealer.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Level/script/level.gd" type="Script" id=9]
+[ext_resource path="res://Font/arial.ttf" type="DynamicFontData" id=10]
+
+[sub_resource type="NavigationMesh" id=1]
+vertices = PoolVector3Array( -7.57915, 5.93732, -17.0078, -14.7791, 5.93732, -17.0078, -14.7791, 5.93732, -9.80777, -14.7791, 5.93732, 6.19223, -14.7791, 5.93732, 14.1922, -7.57915, 5.93732, 14.1922, 14.8209, 5.93732, -9.80777, 14.8209, 5.93732, -17.0078, 6.82085, 5.93732, -17.0078, 6.82085, 5.93732, 14.1922, 14.8209, 5.93732, 14.1922, 14.8209, 5.93732, 6.19223, -0.379148, 5.93732, -17.0078, -7.57915, 5.93732, -17.0078, -14.7791, 5.93732, -9.80777, -14.7791, 5.93732, -1.80777, -14.7791, 5.93732, 6.19223, -7.57915, 5.93732, 14.1922, -0.379148, 5.93732, 14.1922, 14.8209, 5.93732, -9.80777, 6.82085, 5.93732, -17.0078, -0.379148, 5.93732, -17.0078, 14.8209, 5.93732, -1.80777, -0.379148, 5.93732, 14.1922, 6.82085, 5.93732, 14.1922, 14.8209, 5.93732, 6.19223, -14.7791, 5.93732, -1.80777, -14.7791, 5.93732, 6.19223, -0.379148, 5.93732, 14.1922, 14.8209, 5.93732, 6.19223, 14.8209, 5.93732, -1.80777, -0.379148, 5.93732, -17.0078, -5.97915, -2.96268, -1.00776, -4.37915, -2.96268, -1.80777, -5.97915, -2.96268, -3.40777, -13.1791, -2.96268, -3.40777, 0.420852, -2.96268, 2.19223, -1.17915, -2.96268, 4.59223, 1.22085, -2.96268, 5.39223, 9.22085, -2.96268, 4.59223, 13.2209, -2.96268, 4.59223, 11.6209, -2.96268, 2.19223, 8.42085, -2.96268, -13.8078, 7.62085, -2.96268, -15.4078, 3.62085, -2.96268, -15.4078, 2.82085, -2.96268, -13.8078, -1.17915, -2.96268, -13.8078, -1.17915, -2.96268, -9.80777, 0.420852, -2.96268, -9.00777, 2.82085, -2.96268, -13.8078, 11.6209, -2.96268, -5.00777, 11.6209, -2.96268, -9.00777, 8.42085, -2.96268, -13.8078, -4.37915, -2.96268, 12.5922, -5.17915, -2.96268, 19.7922, -3.57915, -2.96268, 22.1922, 4.42085, -2.96268, 21.3922, 5.22085, -2.96268, 11.7922, 0.420852, -2.96268, 6.99224, 12.4209, -2.96268, 12.5922, 14.0209, -2.96268, 10.9922, 13.2209, -2.96268, 6.99224, 8.42085, -2.96268, 6.19223, 5.22085, -2.96268, 11.7922, 11.6209, -2.96268, -9.00777, 13.2209, -2.96268, -9.80777, 13.2209, -2.96268, -14.6078, 8.42085, -2.96268, -13.8078, 11.6209, -2.96268, -5.00777, 8.42085, -2.96268, -13.8078, 2.82085, -2.96268, -13.8078, 0.420852, -2.96268, -5.00777, 1.22085, -2.96268, 5.39223, 9.22085, -2.96268, 4.59223, -13.9791, -2.96268, 6.19223, -13.9791, -2.96268, 10.9922, -12.3791, -2.96268, 12.5922, -4.37915, -2.96268, 12.5922, -3.57915, -2.96268, 6.99224, -5.97915, -2.96268, 2.99224, 11.6209, -2.96268, 2.19223, 13.2209, -2.96268, -4.20777, 11.6209, -2.96268, -5.00777, 9.22085, -2.96268, 4.59223, 0.420852, -2.96268, -5.00777, -1.17915, -2.96268, -4.20777, 0.420852, -2.96268, 2.19223, -5.97915, -2.96268, -8.20777, -4.37915, -2.96268, -9.00777, -4.37915, -2.96268, -15.4078, -5.97915, -2.96268, 2.99224, -5.97915, -2.96268, -1.00776, -13.1791, -2.96268, -3.40777, -13.9791, -2.96268, 6.19223, 1.22085, -2.96268, 5.39223, 0.420852, -2.96268, 6.99224, 5.22085, -2.96268, 11.7922, 8.42085, -2.96268, 6.19223, 9.22085, -2.96268, 4.59223, 0.420852, -2.96268, -5.00777, 0.420852, -2.96268, 2.19223, 1.22085, -2.96268, 5.39223, 2.82085, -2.96268, -13.8078, 0.420852, -2.96268, -9.00777, 0.420852, -2.96268, -5.00777, -5.97915, -2.96268, -8.20777, -4.37915, -2.96268, -15.4078, -13.1791, -2.96268, -13.8078, -13.1791, -2.96268, -3.40777, 0.420852, -2.96268, 6.99224, -3.57915, -2.96268, 6.99224, -4.37915, -2.96268, 12.5922, -5.97915, -2.96268, -3.40777, -5.97915, -2.96268, -8.20777, -13.1791, -2.96268, -3.40777 )
+polygons = [ PoolIntArray( 2, 1, 0 ), PoolIntArray( 5, 4, 3 ), PoolIntArray( 8, 7, 6 ), PoolIntArray( 11, 10, 9 ), PoolIntArray( 13, 12, 14 ), PoolIntArray( 14, 12, 15 ), PoolIntArray( 18, 17, 16 ), PoolIntArray( 20, 19, 21 ), PoolIntArray( 21, 19, 22 ), PoolIntArray( 25, 24, 23 ), PoolIntArray( 27, 26, 28 ), PoolIntArray( 28, 26, 29 ), PoolIntArray( 29, 26, 30 ), PoolIntArray( 30, 26, 31 ), PoolIntArray( 33, 32, 34 ), PoolIntArray( 34, 32, 35 ), PoolIntArray( 38, 37, 36 ), PoolIntArray( 41, 40, 39 ), PoolIntArray( 43, 42, 44 ), PoolIntArray( 44, 42, 45 ), PoolIntArray( 47, 46, 48 ), PoolIntArray( 48, 46, 49 ), PoolIntArray( 52, 51, 50 ), PoolIntArray( 54, 53, 55 ), PoolIntArray( 55, 53, 56 ), PoolIntArray( 56, 53, 57 ), PoolIntArray( 57, 53, 58 ), PoolIntArray( 60, 59, 61 ), PoolIntArray( 61, 59, 62 ), PoolIntArray( 62, 59, 63 ), PoolIntArray( 65, 64, 66 ), PoolIntArray( 66, 64, 67 ), PoolIntArray( 70, 69, 71 ), PoolIntArray( 71, 69, 68 ), PoolIntArray( 71, 68, 73 ), PoolIntArray( 71, 73, 72 ), PoolIntArray( 75, 74, 76 ), PoolIntArray( 76, 74, 77 ), PoolIntArray( 77, 74, 78 ), PoolIntArray( 78, 74, 79 ), PoolIntArray( 81, 80, 82 ), PoolIntArray( 82, 80, 83 ), PoolIntArray( 86, 85, 84 ), PoolIntArray( 89, 88, 87 ), PoolIntArray( 91, 90, 92 ), PoolIntArray( 92, 90, 93 ), PoolIntArray( 95, 94, 96 ), PoolIntArray( 96, 94, 97 ), PoolIntArray( 97, 94, 98 ), PoolIntArray( 99, 101, 100 ), PoolIntArray( 104, 103, 102 ), PoolIntArray( 106, 105, 107 ), PoolIntArray( 107, 105, 108 ), PoolIntArray( 111, 110, 109 ), PoolIntArray( 114, 113, 112 ) ]
+cell_size = 0.8
+cell_height = 0.1
+
+[sub_resource type="DynamicFont" id=2]
+size = 32
+font_data = ExtResource( 10 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 24
+font_data = ExtResource( 10 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 18
+font_data = ExtResource( 10 )
 
 [node name="Level" type="Spatial"]
+script = ExtResource( 9 )
 
-[node name="level1" parent="." instance=ExtResource( 2 )]
+[node name="Player" parent="." instance=ExtResource( 6 )]
+
+[node name="Navigation" type="Navigation" parent="."]
+
+[node name="NavigationMeshInstance" type="NavigationMeshInstance" parent="Navigation"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.745878, 0.000211239, 0.522591 )
+navmesh = SubResource( 1 )
+
+[node name="level1" parent="Navigation/NavigationMeshInstance" instance=ExtResource( 2 )]
 transform = Transform( -3.27835e-08, 0, -0.75, 0, 0.75, 0, 0.75, 0, -3.27835e-08, 0, 0, 0 )
+skeleton = NodePath("../../..")
 
-[node name="Display_table" parent="." instance=ExtResource( 3 )]
-transform = Transform( 0.701634, 0, 0, 0, 1.89468, 0, 0, 0, 1.77756, -4.19988, -1.2345, 1.16332 )
+[node name="Display_table" parent="Navigation/NavigationMeshInstance/level1" instance=ExtResource( 3 )]
+transform = Transform( -4.08925e-08, 0, 2.37008, 0, 2.52624, 0, -0.935512, 0, -1.03599e-07, 1.55109, -1.646, 5.59984 )
+skeleton = NodePath("../../../..")
 
-[node name="Cube1" parent="Display_table" instance=ExtResource( 4 )]
+[node name="Cube1" parent="Navigation/NavigationMeshInstance/level1/Display_table" instance=ExtResource( 4 )]
 transform = Transform( 0.712622, 0, 0, 0, 0.263897, 0, 0, 0, 0.281285, -0.0821543, 1.26452, -0.474072 )
-skeleton = NodePath("../..")
+skeleton = NodePath("../../../../..")
 
-[node name="Sphere1" parent="Display_table" instance=ExtResource( 5 )]
+[node name="Sphere1" parent="Navigation/NavigationMeshInstance/level1/Display_table" instance=ExtResource( 5 )]
 transform = Transform( 0.712622, 0, 0, 0, 0.263897, 0, 0, 0, 0.281285, -0.0172143, 1.25788, -0.473409 )
-skeleton = NodePath("../..")
+skeleton = NodePath("../../../../..")
 
-[node name="Cube2" parent="Display_table" instance=ExtResource( 4 )]
+[node name="Cube2" parent="Navigation/NavigationMeshInstance/level1/Display_table" instance=ExtResource( 4 )]
 transform = Transform( 0.712622, 0, 0, 0, 0.263897, 0, 0, 0, 0.281285, -0.0821543, 1.26452, 0.482746 )
-skeleton = NodePath("../..")
+skeleton = NodePath("../../../../..")
 
-[node name="Sphere2" parent="Display_table" instance=ExtResource( 5 )]
+[node name="Sphere2" parent="Navigation/NavigationMeshInstance/level1/Display_table" instance=ExtResource( 5 )]
 transform = Transform( 0.712622, 0, 0, 0, 0.263897, 0, 0, 0, 0.281285, -0.0865569, 1.25788, 0.481885 )
-skeleton = NodePath("../..")
+skeleton = NodePath("../../../../..")
 
-[node name="Display_table2" parent="." instance=ExtResource( 3 )]
-transform = Transform( 0.701634, 0, 0, 0, 1.89468, 0, 0, 0, 1.77756, -4.19988, -1.2345, -5.91343 )
+[node name="Display_table2" parent="Navigation/NavigationMeshInstance/level1" instance=ExtResource( 3 )]
+transform = Transform( -4.08925e-08, 0, 2.37008, 0, 2.52624, 0, -0.935512, 0, -1.03599e-07, -7.88457, -1.646, 5.59984 )
+skeleton = NodePath("../../../..")
 
-[node name="Cube1" parent="Display_table2" instance=ExtResource( 4 )]
+[node name="Cube1" parent="Navigation/NavigationMeshInstance/level1/Display_table2" instance=ExtResource( 4 )]
 transform = Transform( 0.712622, 0, 0, 0, 0.263897, 0, 0, 0, 0.281285, -0.0821543, 1.26452, -0.474072 )
-skeleton = NodePath("../..")
+skeleton = NodePath("../../../../..")
 
-[node name="Sphere1" parent="Display_table2" instance=ExtResource( 5 )]
+[node name="Sphere1" parent="Navigation/NavigationMeshInstance/level1/Display_table2" instance=ExtResource( 5 )]
 transform = Transform( 0.712622, 0, 0, 0, 0.263897, 0, 0, 0, 0.281285, -0.0172143, 1.25788, -0.473409 )
-skeleton = NodePath("../..")
+skeleton = NodePath("../../../../..")
 
-[node name="Cube2" parent="Display_table2" instance=ExtResource( 4 )]
+[node name="Cube2" parent="Navigation/NavigationMeshInstance/level1/Display_table2" instance=ExtResource( 4 )]
 transform = Transform( 0.712622, 0, 0, 0, 0.263897, 0, 0, 0, 0.281285, -0.0821543, 1.26452, 0.482746 )
-skeleton = NodePath("../..")
+skeleton = NodePath("../../../../..")
 
-[node name="Sphere2" parent="Display_table2" instance=ExtResource( 5 )]
+[node name="Sphere2" parent="Navigation/NavigationMeshInstance/level1/Display_table2" instance=ExtResource( 5 )]
 transform = Transform( 0.712622, 0, 0, 0, 0.263897, 0, 0, 0, 0.281285, -0.0865569, 1.25788, 0.481885 )
-skeleton = NodePath("../..")
+skeleton = NodePath("../../../../..")
 
-[node name="Display_table3" parent="." instance=ExtResource( 3 )]
-transform = Transform( -3.06694e-08, 0, 1.77756, 0, 1.89468, 0, -0.701634, 0, -7.76996e-08, -10.985, -1.2345, -15.4864 )
+[node name="Display_table3" parent="Navigation/NavigationMeshInstance/level1" instance=ExtResource( 3 )]
+transform = Transform( -0.935512, 0, -2.07199e-07, 0, 2.52624, 0, 8.1785e-08, 0, -2.37008, -20.6485, -1.646, 14.6467 )
+skeleton = NodePath("../../../..")
 
-[node name="Cube1" parent="Display_table3" instance=ExtResource( 4 )]
+[node name="Cube1" parent="Navigation/NavigationMeshInstance/level1/Display_table3" instance=ExtResource( 4 )]
 transform = Transform( 0.712622, 0, 0, 0, 0.263897, 0, 0, 0, 0.281285, -0.0821543, 1.26452, -0.474072 )
-skeleton = NodePath("../..")
+skeleton = NodePath("../../../../..")
 
-[node name="Sphere1" parent="Display_table3" instance=ExtResource( 5 )]
+[node name="Sphere1" parent="Navigation/NavigationMeshInstance/level1/Display_table3" instance=ExtResource( 5 )]
 transform = Transform( 0.712622, 0, 0, 0, 0.263897, 0, 0, 0, 0.281285, -0.0172143, 1.25788, -0.473409 )
-skeleton = NodePath("../..")
+skeleton = NodePath("../../../../..")
 
-[node name="Cube2" parent="Display_table3" instance=ExtResource( 4 )]
+[node name="Cube2" parent="Navigation/NavigationMeshInstance/level1/Display_table3" instance=ExtResource( 4 )]
 transform = Transform( 0.712622, 0, 0, 0, 0.263897, 0, 0, 0, 0.281285, -0.0821543, 1.26452, 0.482746 )
-skeleton = NodePath("../..")
+skeleton = NodePath("../../../../..")
 
-[node name="Sphere2" parent="Display_table3" instance=ExtResource( 5 )]
+[node name="Sphere2" parent="Navigation/NavigationMeshInstance/level1/Display_table3" instance=ExtResource( 5 )]
 transform = Transform( 0.712622, 0, 0, 0, 0.263897, 0, 0, 0, 0.281285, -0.0865569, 1.25788, 0.481885 )
-skeleton = NodePath("../..")
+skeleton = NodePath("../../../../..")
 
-[node name="Display_table4" parent="." instance=ExtResource( 3 )]
-transform = Transform( -3.06694e-08, 0, 1.77756, 0, 1.89468, 0, -0.701634, 0, -7.76996e-08, 0.82352, -1.2345, -15.4864 )
+[node name="Display_table4" parent="Navigation/NavigationMeshInstance/level1" instance=ExtResource( 3 )]
+transform = Transform( -0.935512, 0, -2.07199e-07, 0, 2.52624, 0, 8.1785e-08, 0, -2.37008, -20.6485, -1.646, -1.09803 )
+skeleton = NodePath("../../../..")
 
-[node name="Cube1" parent="Display_table4" instance=ExtResource( 4 )]
+[node name="Cube1" parent="Navigation/NavigationMeshInstance/level1/Display_table4" instance=ExtResource( 4 )]
 transform = Transform( 0.712622, 0, 0, 0, 0.263897, 0, 0, 0, 0.281285, -0.0821543, 1.26452, -0.474072 )
-skeleton = NodePath("../..")
+skeleton = NodePath("../../../../..")
 
-[node name="Sphere1" parent="Display_table4" instance=ExtResource( 5 )]
+[node name="Sphere1" parent="Navigation/NavigationMeshInstance/level1/Display_table4" instance=ExtResource( 5 )]
 transform = Transform( 0.712622, 0, 0, 0, 0.263897, 0, 0, 0, 0.281285, -0.0172143, 1.25788, -0.473409 )
-skeleton = NodePath("../..")
+skeleton = NodePath("../../../../..")
 
-[node name="Cube2" parent="Display_table4" instance=ExtResource( 4 )]
+[node name="Cube2" parent="Navigation/NavigationMeshInstance/level1/Display_table4" instance=ExtResource( 4 )]
 transform = Transform( 0.712622, 0, 0, 0, 0.263897, 0, 0, 0, 0.281285, -0.0821543, 1.26452, 0.482746 )
-skeleton = NodePath("../..")
+skeleton = NodePath("../../../../..")
 
-[node name="Sphere2" parent="Display_table4" instance=ExtResource( 5 )]
+[node name="Sphere2" parent="Navigation/NavigationMeshInstance/level1/Display_table4" instance=ExtResource( 5 )]
 transform = Transform( 0.712622, 0, 0, 0, 0.263897, 0, 0, 0, 0.281285, -0.0865569, 1.25788, 0.481885 )
-skeleton = NodePath("../..")
+skeleton = NodePath("../../../../..")
 
-[node name="Display_table5" parent="." instance=ExtResource( 3 )]
-transform = Transform( -3.06694e-08, 0, 1.77756, 0, 1.89468, 0, -0.701634, 0, -7.76996e-08, 10.222, -1.2345, -15.4864 )
+[node name="Display_table5" parent="Navigation/NavigationMeshInstance/level1" instance=ExtResource( 3 )]
+transform = Transform( -0.935512, 0, -2.07199e-07, 0, 2.52624, 0, 8.1785e-08, 0, -2.37008, -20.6485, -1.646, -13.6293 )
+skeleton = NodePath("../../../..")
 
-[node name="Cube1" parent="Display_table5" instance=ExtResource( 4 )]
+[node name="Cube1" parent="Navigation/NavigationMeshInstance/level1/Display_table5" instance=ExtResource( 4 )]
 transform = Transform( 0.712622, 0, 0, 0, 0.263897, 0, 0, 0, 0.281285, -0.0821543, 1.26452, -0.474072 )
-skeleton = NodePath("../..")
+skeleton = NodePath("../../../../..")
 
-[node name="Sphere1" parent="Display_table5" instance=ExtResource( 5 )]
+[node name="Sphere1" parent="Navigation/NavigationMeshInstance/level1/Display_table5" instance=ExtResource( 5 )]
 transform = Transform( 0.712622, 0, 0, 0, 0.263897, 0, 0, 0, 0.281285, -0.0172143, 1.25788, -0.473409 )
-skeleton = NodePath("../..")
+skeleton = NodePath("../../../../..")
 
-[node name="Cube2" parent="Display_table5" instance=ExtResource( 4 )]
+[node name="Cube2" parent="Navigation/NavigationMeshInstance/level1/Display_table5" instance=ExtResource( 4 )]
 transform = Transform( 0.712622, 0, 0, 0, 0.263897, 0, 0, 0, 0.281285, -0.0821543, 1.26452, 0.482746 )
-skeleton = NodePath("../..")
+skeleton = NodePath("../../../../..")
 
-[node name="Sphere2" parent="Display_table5" instance=ExtResource( 5 )]
+[node name="Sphere2" parent="Navigation/NavigationMeshInstance/level1/Display_table5" instance=ExtResource( 5 )]
 transform = Transform( 0.712622, 0, 0, 0, 0.263897, 0, 0, 0, 0.281285, -0.0865569, 1.25788, 0.481885 )
-skeleton = NodePath("../..")
+skeleton = NodePath("../../../../..")
 
-[node name="Display_table6" parent="." instance=ExtResource( 3 )]
-transform = Transform( 0.701634, 0, 0, 0, 1.89468, 0, 0, 0, 1.77756, 13.1303, -1.2345, -7.21815 )
+[node name="Display_table6" parent="Navigation/NavigationMeshInstance/level1" instance=ExtResource( 3 )]
+transform = Transform( -4.08925e-08, 0, 2.37008, 0, 2.52624, 0, -0.935512, 0, -1.03599e-07, -9.6242, -1.646, -17.5071 )
+skeleton = NodePath("../../../..")
 
-[node name="Cube1" parent="Display_table6" instance=ExtResource( 4 )]
+[node name="Cube1" parent="Navigation/NavigationMeshInstance/level1/Display_table6" instance=ExtResource( 4 )]
 transform = Transform( 0.712622, 0, 0, 0, 0.263897, 0, 0, 0, 0.281285, -0.0821543, 1.26452, -0.474072 )
-skeleton = NodePath("../..")
+skeleton = NodePath("../../../../..")
 
-[node name="Sphere1" parent="Display_table6" instance=ExtResource( 5 )]
+[node name="Sphere1" parent="Navigation/NavigationMeshInstance/level1/Display_table6" instance=ExtResource( 5 )]
 transform = Transform( 0.712622, 0, 0, 0, 0.263897, 0, 0, 0, 0.281285, -0.0172143, 1.25788, -0.473409 )
-skeleton = NodePath("../..")
+skeleton = NodePath("../../../../..")
 
-[node name="Cube2" parent="Display_table6" instance=ExtResource( 4 )]
+[node name="Cube2" parent="Navigation/NavigationMeshInstance/level1/Display_table6" instance=ExtResource( 4 )]
 transform = Transform( 0.712622, 0, 0, 0, 0.263897, 0, 0, 0, 0.281285, -0.0821543, 1.26452, 0.482746 )
-skeleton = NodePath("../..")
+skeleton = NodePath("../../../../..")
 
-[node name="Sphere2" parent="Display_table6" instance=ExtResource( 5 )]
+[node name="Sphere2" parent="Navigation/NavigationMeshInstance/level1/Display_table6" instance=ExtResource( 5 )]
 transform = Transform( 0.712622, 0, 0, 0, 0.263897, 0, 0, 0, 0.281285, -0.0865569, 1.25788, 0.481885 )
-skeleton = NodePath("../..")
+skeleton = NodePath("../../../../..")
 
-[node name="Display_table7" parent="." instance=ExtResource( 3 )]
-transform = Transform( 0.701634, 0, 0, 0, 1.89468, 0, 0, 0, 1.77756, 13.1303, -1.2345, 0.114464 )
+[node name="Display_table7" parent="Navigation/NavigationMeshInstance/level1" instance=ExtResource( 3 )]
+transform = Transform( -4.08925e-08, 0, 2.37008, 0, 2.52624, 0, -0.935512, 0, -1.03599e-07, 0.152618, -1.646, -17.5071 )
+skeleton = NodePath("../../../..")
 
-[node name="Cube1" parent="Display_table7" instance=ExtResource( 4 )]
+[node name="Cube1" parent="Navigation/NavigationMeshInstance/level1/Display_table7" instance=ExtResource( 4 )]
 transform = Transform( 0.712622, 0, 0, 0, 0.263897, 0, 0, 0, 0.281285, -0.0821543, 1.26452, -0.474072 )
-skeleton = NodePath("../..")
+skeleton = NodePath("../../../../..")
 
-[node name="Sphere1" parent="Display_table7" instance=ExtResource( 5 )]
+[node name="Sphere1" parent="Navigation/NavigationMeshInstance/level1/Display_table7" instance=ExtResource( 5 )]
 transform = Transform( 0.712622, 0, 0, 0, 0.263897, 0, 0, 0, 0.281285, -0.0172143, 1.25788, -0.473409 )
-skeleton = NodePath("../..")
+skeleton = NodePath("../../../../..")
 
-[node name="Cube2" parent="Display_table7" instance=ExtResource( 4 )]
+[node name="Cube2" parent="Navigation/NavigationMeshInstance/level1/Display_table7" instance=ExtResource( 4 )]
 transform = Transform( 0.712622, 0, 0, 0, 0.263897, 0, 0, 0, 0.281285, -0.0821543, 1.26452, 0.482746 )
-skeleton = NodePath("../..")
+skeleton = NodePath("../../../../..")
 
-[node name="Sphere2" parent="Display_table7" instance=ExtResource( 5 )]
+[node name="Sphere2" parent="Navigation/NavigationMeshInstance/level1/Display_table7" instance=ExtResource( 5 )]
 transform = Transform( 0.712622, 0, 0, 0, 0.263897, 0, 0, 0, 0.281285, -0.0865569, 1.25788, 0.481885 )
-skeleton = NodePath("../..")
+skeleton = NodePath("../../../../..")
 
-[node name="Display_table8" parent="." instance=ExtResource( 3 )]
-transform = Transform( -0.701634, 0, -1.55399e-07, 0, 1.89468, 0, 6.13388e-08, 0, -1.77756, -1.10102, -1.2345, 0.114464 )
+[node name="Display_table8" parent="Navigation/NavigationMeshInstance/level1" instance=ExtResource( 3 )]
+transform = Transform( 1.22678e-07, 0, -2.37008, 0, 2.52624, 0, 0.935512, 0, 3.10798e-07, 0.152619, -1.646, 1.46803 )
+skeleton = NodePath("../../../..")
 
-[node name="Cube1" parent="Display_table8" instance=ExtResource( 4 )]
+[node name="Cube1" parent="Navigation/NavigationMeshInstance/level1/Display_table8" instance=ExtResource( 4 )]
 transform = Transform( 0.712622, 0, 0, 0, 0.263897, 0, 0, 0, 0.281285, -0.0821543, 1.26452, -0.474072 )
-skeleton = NodePath("../..")
+skeleton = NodePath("../../../../..")
 
-[node name="Sphere1" parent="Display_table8" instance=ExtResource( 5 )]
+[node name="Sphere1" parent="Navigation/NavigationMeshInstance/level1/Display_table8" instance=ExtResource( 5 )]
 transform = Transform( 0.712622, 0, 0, 0, 0.263897, 0, 0, 0, 0.281285, -0.0172143, 1.25788, -0.473409 )
-skeleton = NodePath("../..")
+skeleton = NodePath("../../../../..")
 
-[node name="Cube2" parent="Display_table8" instance=ExtResource( 4 )]
+[node name="Cube2" parent="Navigation/NavigationMeshInstance/level1/Display_table8" instance=ExtResource( 4 )]
 transform = Transform( 0.712622, 0, 0, 0, 0.263897, 0, 0, 0, 0.281285, -0.0821543, 1.26452, 0.482746 )
-skeleton = NodePath("../..")
+skeleton = NodePath("../../../../..")
 
-[node name="Sphere2" parent="Display_table8" instance=ExtResource( 5 )]
+[node name="Sphere2" parent="Navigation/NavigationMeshInstance/level1/Display_table8" instance=ExtResource( 5 )]
 transform = Transform( 0.712622, 0, 0, 0, 0.263897, 0, 0, 0, 0.281285, -0.0865569, 1.25788, 0.481885 )
-skeleton = NodePath("../..")
+skeleton = NodePath("../../../../..")
 
-[node name="Display_table9" parent="." instance=ExtResource( 3 )]
-transform = Transform( -0.701634, 0, -1.55399e-07, 0, 1.89468, 0, 6.13388e-08, 0, -1.77756, -1.10102, -1.2345, -6.95358 )
+[node name="Display_table9" parent="Navigation/NavigationMeshInstance/level1" instance=ExtResource( 3 )]
+transform = Transform( 1.22678e-07, 0, -2.37008, 0, 2.52624, 0, 0.935512, 0, 3.10798e-07, -9.27144, -1.646, 1.46803 )
+skeleton = NodePath("../../../..")
 
-[node name="Cube1" parent="Display_table9" instance=ExtResource( 4 )]
+[node name="Cube1" parent="Navigation/NavigationMeshInstance/level1/Display_table9" instance=ExtResource( 4 )]
 transform = Transform( 0.712622, 0, 0, 0, 0.263897, 0, 0, 0, 0.281285, -0.0821543, 1.26452, -0.474072 )
-skeleton = NodePath("../..")
+skeleton = NodePath("../../../../..")
 
-[node name="Sphere1" parent="Display_table9" instance=ExtResource( 5 )]
+[node name="Sphere1" parent="Navigation/NavigationMeshInstance/level1/Display_table9" instance=ExtResource( 5 )]
 transform = Transform( 0.712622, 0, 0, 0, 0.263897, 0, 0, 0, 0.281285, -0.0172143, 1.25788, -0.473409 )
-skeleton = NodePath("../..")
+skeleton = NodePath("../../../../..")
 
-[node name="Cube2" parent="Display_table9" instance=ExtResource( 4 )]
+[node name="Cube2" parent="Navigation/NavigationMeshInstance/level1/Display_table9" instance=ExtResource( 4 )]
 transform = Transform( 0.712622, 0, 0, 0, 0.263897, 0, 0, 0, 0.281285, -0.0821543, 1.26452, 0.482746 )
-skeleton = NodePath("../..")
+skeleton = NodePath("../../../../..")
 
-[node name="Sphere2" parent="Display_table9" instance=ExtResource( 5 )]
+[node name="Sphere2" parent="Navigation/NavigationMeshInstance/level1/Display_table9" instance=ExtResource( 5 )]
 transform = Transform( 0.712622, 0, 0, 0, 0.263897, 0, 0, 0, 0.281285, -0.0865569, 1.25788, 0.481885 )
-skeleton = NodePath("../..")
+skeleton = NodePath("../../../../..")
 
-[node name="Spot" parent="." instance=ExtResource( 1 )]
+[node name="Spot" parent="Navigation/NavigationMeshInstance/level1" instance=ExtResource( 1 )]
+transform = Transform( -2.49096e-07, 0, 1.33333, 0, 1.33333, 0, -5.69865, 0, -5.82818e-08, 26.8209, -4.08832, -0.0824541 )
 
-[node name="Spot2" parent="." instance=ExtResource( 1 )]
-transform = Transform( -3.77265e-07, 0, 2.01938, 0, 1, 0, -4.27399, 0, -4.37114e-08, 0.0618398, -3.06624, 12.8246 )
+[node name="Spot2" parent="Navigation/NavigationMeshInstance/level1" instance=ExtResource( 1 )]
+transform = Transform( -5.69865, 0, -1.75975e-07, 0, 1.33333, 0, 7.52116e-07, 0, -2.69251, 17.0995, -4.08832, -0.0824538 )
 
-[node name="Spot6" parent="." instance=ExtResource( 1 )]
-transform = Transform( -1.86822e-07, 0, 1, 0, 1, 0, -4.27399, 0, -4.37114e-08, 6.02488, -3.06624, -1.73978 )
+[node name="Spot3" parent="Navigation/NavigationMeshInstance/level1" instance=ExtResource( 1 )]
+transform = Transform( -3.76195, 0, -9.67563e-08, 0, 1.33333, 0, 4.13536e-07, 0, -1.33333, 13.019, -4.08832, -16.4844 )
 
-[node name="Spot3" parent="." instance=ExtResource( 1 )]
-transform = Transform( -1.86822e-07, 0, 1, 0, 1, 0, -2.82146, 0, -2.88559e-08, 12.3633, -3.06624, 9.76426 )
+[node name="Spot4" parent="Navigation/NavigationMeshInstance/level1" instance=ExtResource( 1 )]
+transform = Transform( -3.76195, 0, -9.67563e-08, 0, 1.33333, 0, 4.13536e-07, 0, -1.33333, 12.6795, -4.08832, 16.0963 )
 
-[node name="Spot4" parent="." instance=ExtResource( 1 )]
-transform = Transform( -1.86822e-07, 0, 1, 0, 1, 0, -2.82146, 0, -2.88559e-08, -12.0722, -3.06624, 9.5096 )
+[node name="Spot5" parent="Navigation/NavigationMeshInstance/level1" instance=ExtResource( 1 )]
+transform = Transform( -3.76195, 0, -9.67563e-08, 0, 1.33333, 0, 4.13536e-07, 0, -1.33333, -2.33304, -4.08832, 16.0963 )
 
-[node name="Spot5" parent="." instance=ExtResource( 1 )]
-transform = Transform( -1.86822e-07, 0, 1, 0, 1, 0, -2.82146, 0, -2.88559e-08, -12.0722, -3.06624, -1.74978 )
+[node name="Spot6" parent="Navigation/NavigationMeshInstance/level1" instance=ExtResource( 1 )]
+transform = Transform( -5.69865, 0, -1.16564e-07, 0, 1.33333, 0, 4.98192e-07, 0, -1.33333, -2.31971, -4.08832, -8.03317 )
+
+[node name="OmniLight" type="OmniLight" parent="Navigation/NavigationMeshInstance/level1"]
+transform = Transform( -5.82818e-08, 0, 1.33333, 0, 1.33333, 0, -1.33333, 0, -5.82818e-08, -5.1109, 6.14851, 10.6667 )
+shadow_enabled = true
+omni_range = 15.0
+
+[node name="OmniLight2" type="OmniLight" parent="Navigation/NavigationMeshInstance/level1"]
+transform = Transform( -5.82818e-08, 0, 1.33333, 0, 1.33333, 0, -1.33333, 0, -5.82818e-08, -5.1109, 6.14851, -9.33333 )
+shadow_enabled = true
+omni_range = 15.0
+
+[node name="OmniLight3" type="OmniLight" parent="Navigation/NavigationMeshInstance/level1"]
+transform = Transform( -5.82818e-08, 0, 1.33333, 0, 1.33333, 0, -1.33333, 0, -5.82818e-08, 18.8891, 6.14851, -8.25668e-07 )
+shadow_enabled = true
+omni_range = 15.0
+
+[node name="NPC1" parent="Navigation" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, -2, 0 )
+
+[node name="NPC2" parent="Navigation" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.1061, -2, 0 )
+
+[node name="NPC3" parent="Navigation" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.1061, -2, 10.322 )
+
+[node name="NPC4" parent="Navigation" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.68839, -2, 10.322 )
+
+[node name="NPC5" parent="Navigation" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.72946, -2, 10.322 )
+
+[node name="NPC6" parent="Navigation" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.8646, -2, 10.322 )
+
+[node name="NPC7" parent="Navigation" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.03172, -2, 18.291 )
+
+[node name="NPC8" parent="Navigation" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.54002, -2, 11.0681 )
+
+[node name="NPC9" parent="Navigation" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.9927, -2, -5.30838 )
+
+[node name="Stealer" parent="Navigation" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.04338, -2.086, 0 )
+
+[node name="Stealer2" parent="Navigation" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.65944, -2.086, 5.41521 )
+
+[node name="Stealer3" parent="Navigation" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.65958, -2.086, 14.8001 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+light_energy = 0.4
+shadow_enabled = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="GameOver" type="Panel" parent="CanvasLayer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/GameOver"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/GameOver/CenterContainer"]
+margin_left = 349.0
+margin_top = 237.0
+margin_right = 675.0
+margin_bottom = 362.0
+custom_constants/separation = 30
+
+[node name="Label" type="Label" parent="CanvasLayer/GameOver/CenterContainer/VBoxContainer"]
+margin_right = 326.0
+margin_bottom = 36.0
+custom_fonts/font = SubResource( 2 )
+text = "Game Over"
+align = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer/GameOver/CenterContainer/VBoxContainer"]
+margin_top = 66.0
+margin_right = 326.0
+margin_bottom = 125.0
+custom_fonts/font = SubResource( 3 )
+text = "You may have kill the very guy
+whose invent the time machine"
+align = 1
+
+[node name="Stolen" type="HBoxContainer" parent="CanvasLayer"]
+margin_right = 48.0
+margin_bottom = 14.0
+
+[node name="Label" type="Label" parent="CanvasLayer/Stolen"]
+margin_right = 61.0
+margin_bottom = 21.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "Stolen: "
+
+[node name="Label2" type="Label" parent="CanvasLayer/Stolen"]
+margin_left = 65.0
+margin_right = 100.0
+margin_bottom = 21.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "0/18"
+
+[node name="Thief_left" type="HBoxContainer" parent="CanvasLayer"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -108.0
+margin_bottom = 21.0
+
+[node name="Label" type="Label" parent="CanvasLayer/Thief_left"]
+margin_right = 79.0
+margin_bottom = 21.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "Thief left: "
+
+[node name="Label2" type="Label" parent="CanvasLayer/Thief_left"]
+margin_left = 83.0
+margin_right = 108.0
+margin_bottom = 21.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "3/3"
