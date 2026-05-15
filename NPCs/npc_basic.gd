@@ -61,7 +61,6 @@ func switch_state(final_state):
 			target = get_random_nav_point()
 			while target.distance_to(global_position) <= 3:
 				target = get_random_nav_point()
-			print(target)
 			navigation_agent.target_location = target
 
 

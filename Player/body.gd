@@ -1,6 +1,7 @@
 extends MeshInstance
 
 var mouse_sensitivity: float = 0.2
+var zoomed_mouse_sens: float = 0.015
 var horizontal_view = 45
 var vertical_ciew = 30
 
@@ -23,7 +24,11 @@ func _input(event):
 				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
-		global_rotate(Vector3.UP, deg2rad(-event.relative.x * mouse_sensitivity))
-		cam.rotate_x(deg2rad(-event.relative.y * mouse_sensitivity))
+		if player.zoomed or player.scope:
+			global_rotate(Vector3.UP, deg2rad(-event.relative.x * zoomed_mouse_sens))
+			cam.rotate_x(deg2rad(-event.relative.y * zoomed_mouse_sens))
+		else:
+			global_rotate(Vector3.UP, deg2rad(-event.relative.x * mouse_sensitivity))
+			cam.rotate_x(deg2rad(-event.relative.y * mouse_sensitivity))
 		cam.rotation_degrees.x = clamp(cam.rotation_degrees.x, -30, 30)
 		
