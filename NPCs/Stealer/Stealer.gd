@@ -25,8 +25,8 @@ enum States{
 var current_state = States.Idle
 
 #Yu Narukami
-var is_thief := true
-var steal := false
+var is_thief: bool =  true
+var steal: bool = false
 
 var display
 var which_display
@@ -45,7 +45,7 @@ func _ready():
 	display = get_tree().get_nodes_in_group("display")
 	spot = get_tree().get_nodes_in_group("spot")
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	match current_state:
 		
 		States.Idle:
