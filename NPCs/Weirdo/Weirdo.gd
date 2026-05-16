@@ -36,8 +36,8 @@ var which_spot
 
 var spot_index
 
-var min_wait = 1
-var max_wait = 2
+var min_wait = 4
+var max_wait = 5
 
 func _ready():
 	randomize()
@@ -84,11 +84,11 @@ func _physics_process(_delta):
 			if navigation_agent.is_navigation_finished():
 				match spot_index:
 					0:
-						rotation_degrees = Vector3(0, 180, 0)
+						rotation_degrees = Vector3(0, -180, 0)
 					2:
-						rotation_degrees = Vector3(0, -90, 0)
-					3, 4:
 						rotation_degrees = Vector3(0, 90, 0)
+					3, 4:
+						rotation_degrees = Vector3(0, -90, 0)
 				
 				switch_state(States.Rest)
 		

@@ -26,7 +26,7 @@ var current_state = States.Idle
 
 #Yu Narukami
 var is_thief: bool =  true
-var steal: bool = false
+var steal: bool = true
 
 var display
 var which_display
@@ -37,7 +37,7 @@ var which_spot
 var spot_index
 
 var min_wait = 1
-var max_wait = 2
+var max_wait = 1
 
 func _ready():
 	randomize()
@@ -113,10 +113,6 @@ func _physics_process(_delta):
 				if which_display.occupy:
 					moving()
 				else:
-					var value = randi() % 2
-					match value:
-						0: steal = true
-						1: steal = false
 					look_at(which_display.global_position, Vector3.UP)
 					which_display._on_interact_display(self)
 					switch_state(States.Interact)

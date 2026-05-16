@@ -45,7 +45,7 @@ func _ready():
 	display = get_tree().get_nodes_in_group("display")
 	spot = get_tree().get_nodes_in_group("spot")
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	match current_state:
 		
 		States.Idle:
