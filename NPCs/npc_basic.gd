@@ -8,11 +8,13 @@ var direction: Vector3 = Vector3.ZERO
 var velocity: Vector3 = Vector3.ZERO
 var target: Vector3 = Vector3.ZERO
 var next_location
+var dead:bool = false
 
 
 onready var navigation: Navigation = $".."
 onready var navigation_agent = $NavigationAgent
 onready var wait_time = $WaitTime
+onready var animation_player = $AnimationPlayer
 
 enum States{
 	Idle,
@@ -20,7 +22,8 @@ enum States{
 	Seek_Spot,
 	Rest,
 	Observe,
-	Interact
+	Interact,
+	Die
 }
 var current_state = States.Idle
 
@@ -49,7 +52,7 @@ func _physics_process(_delta):
 	match current_state:
 		
 		States.Idle:
-			if wait_time.is_stopped():
+			if wait_time.is_stopped() and not dead:
 				wait_time.start(rand_range(min_wait, max_wait))
 		
 		States.Walk:
@@ -93,23 +96,24 @@ func _physics_process(_delta):
 				switch_state(States.Rest)
 		
 		States.Rest:
-			if wait_time.is_stopped():
+			if wait_time.is_stopped() and not dead:
 				wait_time.start(rand_range(min_wait, max_wait))
 		
 		States.Observe:
-			next_location = navigation_agent.get_next_location()
-			direction = (next_location - global_position).normalized()
-			velocity.x = direction.x * speed
-			velocity.z = direction.z * speed
-			look_at(Vector3(
-				global_position.x + velocity.x, 
-				global_translation.y, 
-				global_position.z + velocity.z), 
-				Vector3.UP
-				)
-			move_and_slide(velocity)
+			if not dead:
+				next_location = navigation_agent.get_next_location()
+				direction = (next_location - global_position).normalized()
+				velocity.x = direction.x * speed
+				velocity.z = direction.z * speed
+				look_at(Vector3(
+					global_position.x + velocity.x, 
+					global_translation.y, 
+					global_position.z + velocity.z), 
+					Vector3.UP
+					)
+				move_and_slide(velocity)
 			
-			if navigation_agent.is_target_reached():
+			if navigation_agent.is_target_reached() and not dead:
 				if which_display.occupy:
 					moving()
 				else:
@@ -118,6 +122,9 @@ func _physics_process(_delta):
 					switch_state(States.Interact)
 		
 		States.Interact:
+			pass
+		
+		States.Die:
 			pass
 
 
@@ -161,7 +168,7 @@ func switch_state(final_state):
 			pass
 		
 		States.Observe:
-			if display.size() > 0:
+			if display.size() > 0 and not dead:
 				which_display = display[randi() % display.size()]
 				var pos = which_display.get_node("Position3D")
 				
@@ -169,10 +176,15 @@ func switch_state(final_state):
 		
 		States.Interact:
 			pass
+		
+		States.Die:
+			dead = true
+			wait_time.stop()
+			animation_player.play("Die")
 
 
 func _on_WaitTime_timeout():
-	moving()
+	if not dead: moving()
 
 func moving():
 	var value = randi() % 3

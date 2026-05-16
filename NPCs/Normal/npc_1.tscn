@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://NPCs/npc_basic.gd" type="Script" id=1]
 
@@ -19,7 +19,23 @@ size = Vector3( 0.5, 0.2, 0.1 )
 [sub_resource type="CapsuleShape" id=2]
 radius = 0.5
 
-[node name="NPC1" type="KinematicBody" groups=["innocent"]]
+[sub_resource type="Animation" id=8]
+resource_name = "Die"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 90, 0, 0 ), Vector3( 180, 0, 0 ) ]
+}
+
+[node name="NPC1" type="KinematicBody" groups=["innocent", "npc"]]
 collision_mask = 4
 script = ExtResource( 1 )
 
@@ -40,5 +56,8 @@ avoidance_enabled = true
 
 [node name="WaitTime" type="Timer" parent="."]
 one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Die = SubResource( 8 )
 
 [connection signal="timeout" from="WaitTime" to="." method="_on_WaitTime_timeout"]

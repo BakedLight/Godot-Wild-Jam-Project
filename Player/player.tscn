@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Player/player.gd" type="Script" id=1]
 [ext_resource path="res://Player/body.gd" type="Script" id=2]
 [ext_resource path="res://Player/anchor.gd" type="Script" id=3]
+[ext_resource path="res://Player/Textures/Binoculars2.png" type="Texture" id=4]
+[ext_resource path="res://Player/Textures/New Scope.png" type="Texture" id=5]
 
 [sub_resource type="SphereMesh" id=1]
 radius = 0.5
@@ -22,9 +24,57 @@ update_scale = false
 
 [node name="Body" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.999983, 0, 0, 0, 0.999983, 0, 0, 70 )
-visible = false
 mesh = SubResource( 1 )
 script = ExtResource( 2 )
 
 [node name="Camera" type="Camera" parent="Body"]
-transform = Transform( 1, -8.1274e-16, 0, -8.1274e-16, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform = Transform( 1, 8.12726e-16, 0, -8.1274e-16, 1.00002, 0, 0, 0, 1.00002, 0, 0, 0 )
+
+[node name="RayCast" type="RayCast" parent="Body/Camera"]
+transform = Transform( 1, -8.12712e-16, 0, 8.12726e-16, 0.999982, 0, 0, 0, 0.999982, 0, 0, 0 )
+enabled = true
+cast_to = Vector3( 0, 0, -150 )
+
+[node name="Binoculars Texture" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 4 )
+
+[node name="Crosshair" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -20.0
+margin_right = 20.0
+margin_bottom = 20.0
+
+[node name="ColorRect" type="ColorRect" parent="Crosshair"]
+anchor_left = 0.225
+anchor_top = 0.469
+anchor_right = 0.8
+anchor_bottom = 0.525
+margin_top = 0.24
+rect_pivot_offset = Vector2( 10.875, 1.12494 )
+color = Color( 0.384314, 0.380392, 0.380392, 1 )
+
+[node name="ColorRect2" type="ColorRect" parent="Crosshair"]
+anchor_left = 0.475
+anchor_top = 0.225
+anchor_right = 0.525
+anchor_bottom = 0.8
+margin_left = -9.99996
+margin_top = 9.75006
+margin_right = 11.0
+margin_bottom = -11.2499
+rect_rotation = 89.9999
+rect_pivot_offset = Vector2( 10.875, 1.12494 )
+color = Color( 0.384314, 0.380392, 0.380392, 1 )
+
+[node name="Scope Texture" type="TextureRect" parent="."]
+visible = false
+margin_left = -1.0
+margin_right = 1279.0
+margin_bottom = 720.0
+texture = ExtResource( 5 )

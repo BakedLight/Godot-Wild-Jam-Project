@@ -10,28 +10,38 @@ export var default_zoom = 70
 
 var scope = false
 var zoomed = false
+var target_shot
+
 onready var zoom_tween: SceneTreeTween
 onready var anchor = $Anchor
-
 onready var body = $Body
 onready var camera = $Body/Camera
+onready var binoculars__texture = $"Binoculars Texture"
+onready var scope__texture = $"Scope Texture"
+onready var ray_cast = $Body/Camera/RayCast
+
+func _ready():
+	binoculars__texture.visible = false
+	scope__texture.visible = false
 
 func _physics_process(_delta):
 	
 	if scope:
 		anchor.direction = Vector2.ZERO
-		if Input.is_action_just_pressed("shoot") and scope:
+		if Input.is_action_just_pressed("shoot"):
 			shoot()
 
 func _input(_event):
 	if not zoomed:
 		if Input.is_action_just_pressed("scope"):
 			scope = true
+			scope__texture.visible = true
 			if zoom_tween: zoom_tween.kill()
 			zoom_tween = create_tween()
 			zoom_tween.set_ease(Tween.EASE_OUT)
 			zoom_tween.tween_property(camera, "fov", scope_zoom, switching_time)
 		if Input.is_action_just_released("scope"):
+			scope__texture.visible = false
 			zoom_tween.kill()
 			zoom_tween = create_tween()
 			zoom_tween.set_ease(Tween.EASE_IN)
@@ -41,17 +51,22 @@ func _input(_event):
 	if not scope:
 		if Input.is_action_just_pressed("zoom"):
 			zoomed = true
+			binoculars__texture.visible = true
 			if zoom_tween: zoom_tween.kill()
 			zoom_tween = create_tween()
 			zoom_tween.set_ease(Tween.EASE_OUT)
 			zoom_tween.tween_property(camera, "fov", zoom_amount, zoom_time)
 		if Input.is_action_just_released("zoom"):
+			binoculars__texture.visible = false
 			zoom_tween.kill()
 			zoom_tween = create_tween()
 			zoom_tween.set_ease(Tween.EASE_IN)
 			zoom_tween.tween_property(camera, "fov", default_zoom, zoom_time)
 			yield(get_tree().create_timer(zoom_time), "timeout")
 			zoomed = false
+		
 
 func shoot():
-	pass
+	target_shot = ray_cast.get_collider()
+	if target_shot.is_in_group("npc"):
+		target_shot.switch_state(target_shot.States.Die)

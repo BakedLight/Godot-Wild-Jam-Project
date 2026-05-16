@@ -19,7 +19,7 @@ size = Vector3( 0.5, 0.2, 0.1 )
 [sub_resource type="CapsuleShape" id=7]
 radius = 0.5
 
-[node name="Stealer" type="KinematicBody" groups=["thief"]]
+[node name="Stealer" type="KinematicBody" groups=["npc", "thief"]]
 collision_layer = 2
 collision_mask = 4
 script = ExtResource( 1 )

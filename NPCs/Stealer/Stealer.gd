@@ -20,7 +20,8 @@ enum States{
 	Seek_Spot,
 	Rest,
 	Observe,
-	Interact
+	Interact,
+	Die
 }
 var current_state = States.Idle
 
