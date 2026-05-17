@@ -8,7 +8,7 @@ var direction: Vector3 = Vector3.ZERO
 var velocity: Vector3 = Vector3.ZERO
 var target: Vector3 = Vector3.ZERO
 var next_location
-
+var dead = false
 
 onready var navigation: Navigation = $".."
 onready var navigation_agent = $NavigationAgent
@@ -50,7 +50,7 @@ func _physics_process(_delta):
 	match current_state:
 		
 		States.Idle:
-			if wait_time.is_stopped():
+			if wait_time.is_stopped() and not dead:
 				wait_time.start(rand_range(min_wait, max_wait))
 		
 		States.Walk:
@@ -94,7 +94,7 @@ func _physics_process(_delta):
 				switch_state(States.Rest)
 		
 		States.Rest:
-			if wait_time.is_stopped():
+			if wait_time.is_stopped() and not dead:
 				wait_time.start(rand_range(min_wait, max_wait))
 		
 		States.Observe:
@@ -110,7 +110,7 @@ func _physics_process(_delta):
 				)
 			move_and_slide(velocity)
 			
-			if navigation_agent.is_target_reached():
+			if navigation_agent.is_target_reached() and not dead:
 				if which_display.occupy:
 					moving()
 				else:
@@ -123,6 +123,9 @@ func _physics_process(_delta):
 					switch_state(States.Interact)
 		
 		States.Interact:
+			pass
+		
+		States.Die:
 			pass
 
 
@@ -174,10 +177,14 @@ func switch_state(final_state):
 		
 		States.Interact:
 			pass
+		
+		States.Die:
+			dead = true
+			wait_time.stop()
 
 
 func _on_WaitTime_timeout():
-	moving()
+	if not dead: moving()
 
 func moving():
 	var value = randi() % 3

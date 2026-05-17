@@ -68,5 +68,10 @@ func _input(_event):
 
 func shoot():
 	target_shot = ray_cast.get_collider()
+	print(target_shot)
 	if target_shot.is_in_group("npc"):
 		target_shot.switch_state(target_shot.States.Die)
+	if target_shot.is_in_group("innocent"):
+		GameLogic.emit_signal("game_over")
+	if target_shot.is_in_group("thief"):
+		GameLogic.emit_signal("success")

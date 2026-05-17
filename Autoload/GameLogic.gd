@@ -4,6 +4,7 @@ extends Node
 signal score_changed
 signal ui_changed(score)
 signal game_over
+signal success
 
 var score := 0
 

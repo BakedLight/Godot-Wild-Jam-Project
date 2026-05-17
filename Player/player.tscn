@@ -34,6 +34,7 @@ transform = Transform( 1, 8.12726e-16, 0, -8.1274e-16, 1.00002, 0, 0, 0, 1.00002
 transform = Transform( 1, -8.12712e-16, 0, 8.12726e-16, 0.999982, 0, 0, 0, 0.999982, 0, 0, 0 )
 enabled = true
 cast_to = Vector3( 0, 0, -150 )
+collision_mask = 3
 
 [node name="Binoculars Texture" type="TextureRect" parent="."]
 margin_right = 40.0

@@ -180,7 +180,7 @@ func switch_state(final_state):
 		States.Die:
 			dead = true
 			wait_time.stop()
-			animation_player.play("Die")
+#			animation_player.play("Die")
 
 
 func _on_WaitTime_timeout():
